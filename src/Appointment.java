@@ -61,10 +61,10 @@ public class Appointment {
     }
 
     public void changeStatus(String time){
-        int cur_hour = (time[0] - '0') * 10 + time[1] - '0';
-        int cur_min = (time[3] - '0') * 10 + time[4] - '0';
-        int scheduled_hour = (this.time[0] - '0') * 10 + this.time[4] - '0';
-        int scheduled_min = (this.time[3] - '0') * 10 + this.time[4] - '0';
+        int cur_hour = (time.charAt(0) - '0') * 10 + time.charAt(1) - '0';
+        int cur_min = (time.charAt(3) - '0') * 10 + time.charAt(4) - '0';
+        int scheduled_hour = (this.time.charAt(0) - '0') * 10 + this.time.charAt(1) - '0';
+        int scheduled_min = (this.time.charAt(3) - '0') * 10 + this.time.charAt(4) - '0';
         if(cur_hour < scheduled_hour || (cur_hour == scheduled_hour && cur_min < scheduled_min)){
             status = "waiting";
         }
