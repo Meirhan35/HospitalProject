@@ -57,7 +57,7 @@ public class Patient {
         this.points += points;
     }
     public boolean CheckLoyalty() {
-        if (this.points >= 100) {
+        if (points >= 100) {
             return true;
         }
         return false;
