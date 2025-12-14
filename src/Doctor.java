@@ -3,7 +3,6 @@ public class Doctor{
     private String name;
     private String title;
     private int experience;
-    private String state;
 
     public Doctor(int id , String name , String title , int experience){
         this.id = id;
@@ -24,9 +23,6 @@ public class Doctor{
     public int getExperience(){
         return experience;
     }
-    public String getState(){
-        return state;
-    }
 
     public void setId(int id){
         this.id = id;
@@ -40,28 +36,15 @@ public class Doctor{
     public void setExperience(int experience){
         this.experience = experience;
     }
-    public void setState(String state){
-        this.state = state;
-    }
 
-    public boolean titleCheck(String title){
-        if(this.title == title){
-            return true;
-        }
-        return false;
+    public boolean isExperienced() {
+        return experience >= 10;
     }
-
-    public String whichMastery(){
-        if(this.experience <= 5){
-            return "Begginner";
-        }
-        if(this.experience <= 10){
-            return "Medium";
-        }
-        return "Master";
+    public boolean canPerformSurgery() {
+        return (title == "Surgeon" && experience >= 5);
     }
 
     public String toString(){
-        return "Doctor{ID = " + id + " , name = '" + name + "' , title = '" + title + "' , experience = " + experience + " , state = '" + state + "' }";
+        return "Doctor{ID = " + id + " , name = '" + name + "' , title = '" + title + "' , experience = " + experience + "' }";
     }
 }

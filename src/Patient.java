@@ -1,68 +1,58 @@
 public class Patient {
-    private String name;
-    private String contact;
-    private int age;
-    private String disease;
     private int id;
-    private int points;
+    private String name;
+    private int age;
+    private String bloodtype;
+    private String contact;
 
-    public Patient(String name, String contact, int age, String disease, int id , int points) {
-        this.name = name;
-        this.contact = contact;
-        this.age = age;
-        this.disease = disease;
+    public Patient(int id , String name, int age , String bloodtype, String contact) {
         this.id = id;
-        this.points = points;
+        this.name = name;
+        this.age = age;
+        this.bloodtype = bloodtype;
+        this.contact = contact;
     }
 
+    public int getId(){
+        return id;
+    }
     public String getName(){
         return name;
-    }
-    public String getContact(){
-        return contact;
     }
     public int getAge(){
         return age;
     }
-    public String getDisease(){
-        return disease;
+    public String getBloodtype(){
+        return bloodtype;
     }
-    public int getId(){
-        return id;
-    }
-    public int getPoints(){
-        return points;
+    public String getContact(){
+        return contact;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public void setName(String name){
         this.name = name;
-    }
-    public void setContact(String contact){
-        this.contact = contact;
     }
     public void setAge(int age){
         this.age = age;
     }
-    public void setDisease(String disease){
-        this.disease = disease;
+    public void setBloodtype(String bloodtype){
+        this.bloodtype = bloodtype;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public void setPoints(int points){
-        this.points = points;
+    public void setContact(String contact){
+        this.contact = contact;
     }
 
-    public void addLoyaltyPoints(int points){
-        this.points += points;
+    public String getPatientInfo() {
+        return "Patient: " + name + ", Contact: " + contact;
     }
-    public boolean CheckLoyalty() {
-        if (points >= 100) {
-            return true;
-        }
-        return false;
+    public boolean isMinor() {
+        return age < 18;
     }
+
     public String toString(){
-        return "Patient{ID = ' + id + ' , name = '" + name + "' , age = " + age + " , disease = '" + disease + "' , points = " + points + " , contact = " + contact + "}";
+        return "Patient{ID = " + id + " , name = '" + name + "' , age = " + age + "  , bloodtype = " + bloodtype + " , contact = " + contact + "}";
     }
 }
