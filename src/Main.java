@@ -31,19 +31,17 @@ public class Main {
         System.out.println(patient2.getName() + " info: " + patient2.getPatientInfo());
         System.out.println();
 
-        System.out.println("--- TESTING DOCTOR METHODS ---");
         System.out.println(doctor1.getName() + " experienced: " + doctor1.isExperienced());
         System.out.println(doctor2.getName() + " can perform surgery: " + doctor2.canPerformSurgery());
         System.out.println();
 
-        System.out.println("--- TESTING APPOINTMENT METHODS ---");
         app1.reschedule("2025-03-25");
         System.out.println("Rescheduled appointment: " + app1);
         app2.cancel();
         System.out.println("Cancelled appointment: " + app2);
         System.out.println();
 
-        System.out.println("--- FINAL STATE ---");
+        System.out.println("   FINAL RESULT   ");
         System.out.println(patient1);
         System.out.println(patient2);
         System.out.println(patient3);
