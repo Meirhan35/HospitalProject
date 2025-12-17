@@ -1,10 +1,10 @@
 public class Appointment {
     private int id;
     private String date;
-    private String doctor;
-    private String patient;
+    private Doctor doctor;
+    private Patient patient;
 
-    public Appointment(int id, String date, String doctor , String patient){
+    public Appointment(int id, String date, Doctor doctor , Patient patient){
         this.id = id;
         this.date = date;
         this.doctor = doctor;
@@ -17,10 +17,10 @@ public class Appointment {
     public String getDate(){
         return date;
     }
-    public String getDoctor(){
+    public Doctor getDoctor(){
         return doctor;
     }
-    public String getPatient(){
+    public Patient getPatient(){
         return patient;
     }
 
@@ -30,10 +30,10 @@ public class Appointment {
     public void setDate(String date){
         this.date = date;
     }
-    public void setDoctor(String doctor){
+    public void setDoctor(Doctor doctor){
         this.doctor = doctor;
     }
-    public void setPatient(String patient){
+    public void setPatient(Patient patient){
         this.patient = patient;
     }
 
@@ -45,6 +45,6 @@ public class Appointment {
     }
 
     public String toString(){
-        return "Appointment{ID = " + id + " , date = '" + date + "' , doctor = '" + doctor + "' , patient = '" + patient + "'}";
+        return "Appointment{ID = " + id + " , date = '" + date + "' , doctor = '" + doctor.getName() + "' , patient = '" + patient.getName() + "'}";
     }
 }

@@ -6,11 +6,11 @@ public class Main {
         Patient patient2 = new Patient(102, "Tazhidinov Nurislam" , 18 , "B+" , "+77716164711");
         Patient patient3 = new Patient(103, "Patchahanov Atabek" , 27 , "B-" , "+77755310106");
 
-        Doctor doctor1 = new Doctor(201 , "A. Darkhnov" , "Surgeon", 13);
+        Doctor doctor1 = new Doctor(201 , "A. Darkhanov" , "Surgeon", 13);
         Doctor doctor2 = new Doctor(202 , "T. Karimov", "Cardiologist" , 5);
 
-        Appointment app1 = new Appointment(301 , "2025-12-25" , "A. Darkhanov" , "Abilda Meirhan");
-        Appointment app2 = new Appointment(302 , "2025-12-20" , "T. Karimov" , "Patchahanov Atabek");
+        Appointment app1 = new Appointment(301 , "2025-12-25" , doctor1 , patient1);
+        Appointment app2 = new Appointment(302 , "2025-12-20" , doctor2 , patient3);
 
         System.out.println("    PATIENTS    ");
         System.out.println(patient1.toString());
@@ -39,7 +39,7 @@ public class Main {
         patient3.setName("Keles Ansar");
         patient3.setAge(18);
         doctor2.setExperience(9);
-        app1.setDoctor("T. Karimov");
+        app1.setDoctor(doctor2);
 
         System.out.println(patient1.getName() + " is minor: " + patient1.isMinor());
         System.out.println(patient2.getName() + " info: " + patient2.getPatientInfo());
