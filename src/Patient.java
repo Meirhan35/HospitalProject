@@ -46,7 +46,7 @@ public class Patient {
     }
 
     public String getPatientInfo() {
-        return "Patient: " + name + ", Contact: " + contact;
+        return "Age: " + age + ", Bloodtype: '" + bloodtype + "', Contact: " + contact;
     }
     public boolean isMinor() {
         return age < 18;
