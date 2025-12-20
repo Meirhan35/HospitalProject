@@ -40,6 +40,7 @@ public class Main {
         patient3.setAge(18);
         doctor2.setExperience(9);
         app1.setDoctor(doctor2);
+        app2.getDate();
 
         System.out.println(patient1.getName() + " is minor: " + patient1.isMinor());
         System.out.println(patient2.getName() + " info: " + patient2.getPatientInfo());
