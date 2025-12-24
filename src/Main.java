@@ -1,7 +1,5 @@
 public class Main {
     public static void main(String[] args){
-        System.out.println("Hospital Management System");
-        System.out.println();
         Patient patient1 = new Patient(101, "Abilda Meirhan" , 17 , "A-" , "+77476896790");
         Patient patient2 = new Patient(102, "Tazhidinov Nurislam" , 18 , "B+" , "+77716164711");
         Patient patient3 = new Patient(103, "Patchahanov Atabek" , 27 , "B-" , "+77755310106");
