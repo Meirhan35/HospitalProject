@@ -8,7 +8,7 @@ public class Patient {
     public Patient(int id , String name, int age , String bloodtype, String contact) {
         this.id = id;
         this.name = name;
-        this.age = age;
+        setAge(age);
         this.bloodtype = bloodtype;
         this.contact = contact;
     }
@@ -36,7 +36,13 @@ public class Patient {
         this.name = name;
     }
     public void setAge(int age){
-        this.age = age;
+        if(age >= 0){
+            this.age = age;
+        }
+        else{
+            System.out.println("Warning: Age cannot be negative! Setting to 0.");
+            this.age = 0;
+        }
     }
     public void setBloodtype(String bloodtype){
         this.bloodtype = bloodtype;

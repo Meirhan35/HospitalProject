@@ -8,7 +8,7 @@ public class Doctor{
         this.id = id;
         this.name = name;
         this.title = title;
-        this.experience = experience;
+        setExperience(experience);
     }
 
     public int getId(){
@@ -34,7 +34,13 @@ public class Doctor{
         this.title = title;
     }
     public void setExperience(int experience){
-        this.experience = experience;
+        if(experience >= 0){
+            this.experience = experience;
+        }
+        else{
+            System.out.println("Warning: Experience cannot be negative! Setting to 0.");
+            this.experience = 0;
+        }
     }
 
     public boolean isExperienced() {
