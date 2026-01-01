@@ -1,56 +1,39 @@
-public class Doctor{
-    private int id;
-    private String name;
+public class Doctor extends Staff{
     private String title;
-    private int experience;
-
-    public Doctor(int id , String name , String title , int experience){
-        this.id = id;
-        this.name = name;
+    public Doctor(int id , String name , String title , int experience , double salary){
+        super(id , name , experience , salary);
         this.title = title;
-        setExperience(experience);
     }
 
-    public int getId(){
-        return id;
-    }
-    public String getName(){
-        return name;
-    }
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
-    public int getExperience(){
-        return experience;
-    }
-
-    public void setId(int id){
-        this.id = id;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
-    public void setExperience(int experience){
-        if(experience >= 0){
-            this.experience = experience;
-        }
-        else{
-            System.out.println("Warning: Experience cannot be negative! Setting to 0.");
-            this.experience = 0;
-        }
-    }
 
-    public boolean isExperienced() {
-        return experience >= 10;
-    }
     public boolean canPerformSurgery() {
         return (title == "Surgeon" && experience >= 5);
     }
 
-    public String toString(){
-        return "Doctor{ID = " + id + " , name = '" + name + "' , title = '" + title + "' , experience = " + experience + "' }";
+    @Override
+    public void getRole() {
+        System.out.println("Doctor");
     }
+
+    @Override
+    public boolean isExperienced(){
+        if(experience >= 10){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    @Override
+    public String toString(){
+        return "Doctor{ID: " + id + " , name: '" + name + ", title: '" + title + "', experience: " + experience + " years, salary: " + salary + "}";
+    }
+
 }

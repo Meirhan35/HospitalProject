@@ -1,11 +1,12 @@
+import java.security.AllPermission;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
     public static int idP = 10000;
-    public static int idD = 20000;
+    public static int idS = 20000;
     public static int idA = 30000;
     private static ArrayList<Patient> patients = new ArrayList<>();
-    private static ArrayList<Doctor> doctors  = new ArrayList<>();
+    private static ArrayList<Staff> allstaff = new ArrayList<>();
     private static ArrayList<Appointment> appointments = new ArrayList<>();
 
     private static Scanner scanner = new Scanner(System.in);
@@ -16,10 +17,14 @@ public class Main {
         System.out.println("========================================");
         System.out.println("1. Add Patient");
         System.out.println("2. View All Patients");
-        System.out.println("3. Add Doctor");
-        System.out.println("4. View All Doctors");
-        System.out.println("5. Add Appointment");
-        System.out.println("6. View All Appointment");
+        System.out.println("3. Add Nurse");
+        System.out.println("4. View All Nurses");
+        System.out.println("5. Add Doctor");
+        System.out.println("6. View All Doctors");
+        System.out.println("7. Add Appointment");
+        System.out.println("8. View All Appointments");
+        System.out.println("9. View All Staff");
+        System.out.println("10. Demonstrate Polymorphism");
         System.out.println("0. Exit");
         System.out.println("========================================");
         System.out.print("Enter your choice: ");
@@ -65,10 +70,57 @@ public class Main {
         System.out.println();
     }
 
+    private static void addNurse() {
+        System.out.println("\n--- ADD NURSE ---");
+        int id = idS;
+        idS++;
+        System.out.print("Enter nurse name: ");
+        String name = scanner.nextLine();
+        System.out.println("Enter specalization: ");
+        String specalization = scanner.nextLine();
+        System.out.print("Enter experience: ");
+        int experience = scanner.nextInt();
+        scanner.nextLine();
+        while(experience < 0){
+            System.out.print("Negative number found, please enter again: ");
+            experience = scanner.nextInt();
+            scanner.nextLine();
+        }
+        double salary = scanner.nextDouble();
+        scanner.nextLine();
+        Staff staff = new Nurse(id , name  , specalization ,experience, salary);
+        allstaff.add(staff);
+        System.out.println("\n Nurse added successfully!");
+    }
+
+    private static void viewNurses() {
+        System.out.println("\n========================================");
+        System.out.println("               ALL NURSES");
+        System.out.println("========================================");
+
+        int nurseCount = 0;
+
+        for(Staff current : allstaff){
+            if(current instanceof Nurse) {
+                Nurse nurse = (Nurse) current;
+                nurseCount++;
+                System.out.println(nurseCount + ". " + nurse.getName());
+                System.out.println("  Specalization: " + nurse.getSpecialization());
+                System.out.println("  Experience: " + nurse.getExperience() + " years");
+                System.out.println("  Salary: " + nurse.getSalary() + " KZT");
+                System.out.println();
+            }
+        }
+
+        if(nurseCount == 0){
+            System.out.println("No nurses found.");
+        }
+    }
+
     private static void addDoctor() {
         System.out.println("\n--- ADD DOCTOR ---");
-        int id = idD;
-        idD++;
+        int id = idS;
+        idS++;
         System.out.print("Enter doctor name: ");
         String name = scanner.nextLine();
         System.out.print("Enter title: ");
@@ -81,26 +133,41 @@ public class Main {
             experience = scanner.nextInt();
             scanner.nextLine();
         }
-        Doctor doctor = new Doctor(id , name , title , experience);
-        doctors.add(doctor);
+        System.out.println("Enter salary: ");
+        double salary = scanner.nextDouble();
+        scanner.nextLine();
+        while(salary < 0){
+            System.out.print("Negative number found, please enter again: ");
+            experience = scanner.nextInt();
+            scanner.nextLine();
+        }
+        Staff staff = new Doctor(id , name , title , experience , salary);
+        allstaff.add(staff);
         System.out.println("\n Doctor added successfully!");
     }
 
     private static void viewDoctors() {
         System.out.println("\n========================================");
-        System.out.println(" ALL DOCTORS");
+        System.out.println("               ALL DOCTORS");
         System.out.println("========================================");
-        if (doctors.isEmpty()) {
+
+        int doctorCount = 0;
+
+        for(Staff current : allstaff){
+            if(current instanceof Doctor) {
+                Doctor doctor = (Doctor) current;
+                doctorCount++;
+                System.out.println(doctorCount + ". " + doctor.getName());
+                System.out.println("  Title: " + doctor.getTitle());
+                System.out.println("  Experience: " + doctor.getExperience() + " years");
+                System.out.println("  Salary: " + doctor.getSalary() + " KZT");
+                System.out.println();
+            }
+        }
+
+        if(doctorCount == 0){
             System.out.println("No doctors found.");
-            return;
         }
-        System.out.println("Total doctors: " + doctors.size());
-        System.out.println();
-        for (int i = 0; i < doctors.size(); i++) {
-            Doctor doctor = doctors.get(i);
-            System.out.println(doctor.toString());
-        }
-        System.out.println();
     }
 
     private static void addAppointment() {
@@ -111,9 +178,11 @@ public class Main {
         String date = scanner.nextLine();
         System.out.println("Enter doctors name: ");
         String doctor = scanner.nextLine();
+        System.out.println("Enter nurses name: ");
+        String nurse = scanner.nextLine();
         System.out.println("Enter patients name: ");
         String patient = scanner.nextLine();
-        Appointment app = new Appointment(id , date , doctor , patient);
+        Appointment app = new Appointment(id , date , doctor, nurse , patient);
         appointments.add(app);
         System.out.println("\n Appointment added successfully!");
     }
@@ -135,17 +204,53 @@ public class Main {
         System.out.println();
     }
 
+    private static void viewAllStaff(){
+        System.out.println("\n========================================");
+        System.out.println("     ALL STAFF (POLYMORPHIC LIST)");
+        System.out.println("========================================");
+
+        if(allstaff.isEmpty()){
+            System.out.println("No staff members found.");
+        }
+
+        System.out.println("Total staff: " + allstaff.size());
+        System.out.println();
+
+        for(int i = 0;i < allstaff.size();i++){
+            Staff current = allstaff.get(i);
+            System.out.println((i + 1) + ". " + current);
+        }
+        System.out.println();
+    }
+
+    private static void demonstratePolymorphism() {
+        System.out.println("\n========================================");
+        System.out.println("      POLYMORPHISM DEMONSTRATION");
+        System.out.println("========================================");
+        System.out.println("Calling getRole() on all staff members:");
+        System.out.println();
+        for (Staff s : allstaff) {
+            s.getRole();
+        }
+        System.out.println();
+        System.out.println(" Notice: Same method name (work), different output!");
+        System.out.println(" This is POLYMORPHISM in action!");
+    }
 
     public static void main(String[] args){
         patients.add(new Patient(idP++, "Abilda Meirhan" , 17 , "A-" , "+77476896790"));
         patients.add(new Patient(idP++, "Tazhidinov Nurislam" , 18 , "B+" , "+77716164711"));
         patients.add(new Patient(idP++, "Patchahanov Atabek" , 27 , "B-" , "+77755310106"));
 
-        doctors.add(new Doctor(idD++ , "A. Darkhanov" , "Surgeon", 13));
-        doctors.add(new Doctor(idD++ , "T. Karimov", "Cardiologist" , 5));
+        allstaff.add(new Nurse(idS++ , "Begimai Qalmakhan" , "Emergency", 3 , 250000));
+        allstaff.add(new Nurse(idS++ , "Leyla Faizulla" , "Pediatrics", 10 , 400000));
 
-        appointments.add(new Appointment(idA++ , "2025-12-25" , "A. Darkhanov" , "Abilda Meirhan"));
-        appointments.add(new Appointment(idA++ , "2025-12-20" ,"T. Karimov", "Patchahanov Atabek"));
+
+        allstaff.add(new Doctor(idS++ , "Arman Darkhanov" , "Surgeon", 13 , 1000000));
+        allstaff.add(new Doctor(idS++ , "Turar Karimov", "Cardiologist" , 5 , 600000));
+
+        appointments.add(new Appointment(idA++ , "2025-12-25" , "A. Darkhanov" ,"Begimai Qalmakhan", "Abilda Meirhan"));
+        appointments.add(new Appointment(idA++ , "2025-12-20" ,"T. Karimov","Leyla Faizulla" , "Patchahanov Atabek"));
 
         boolean running = true;
         while(running){
@@ -160,16 +265,28 @@ public class Main {
                     viewPatients();
                     break;
                 case 3:
-                    addDoctor();
+                    addNurse();
                     break;
                 case 4:
-                    viewDoctors();
+                    viewNurses();
                     break;
                 case 5:
-                    addAppointment();
+                    addDoctor();
                     break;
                 case 6:
+                    viewDoctors();
+                    break;
+                case 7:
+                    addAppointment();
+                    break;
+                case 8:
                     viewAppointment();
+                    break;
+                case 9:
+                    viewAllStaff();
+                    break;
+                case 10:
+                    demonstratePolymorphism();
                     break;
                 case 0:
                     System.out.println("Good Bye!");
