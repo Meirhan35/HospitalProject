@@ -1,4 +1,6 @@
-public class Nurse extends Staff {
+package model;
+
+public class Nurse extends model.Staff {
     private String specialization;
 
     public Nurse(int id, String name , String specialization, int experience, double salary){
@@ -18,6 +20,10 @@ public class Nurse extends Staff {
         System.out.println("Nurse");
     }
 
+    @Override
+    public void work(){
+        System.out.println("Nurse " + name + " takes care of " + specialization + "patients");
+    }
     @Override
     public boolean isExperienced(){
         if(experience >= 5){

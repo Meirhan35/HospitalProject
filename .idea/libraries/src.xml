@@ -3,7 +3,7 @@
     <CLASSES />
     <JAVADOC />
     <SOURCES>
-      <root url="file://$PROJECT_DIR$/src" />
+      <root url="file://$PROJECT_DIR$/model" />
     </SOURCES>
   </library>
 </component>
