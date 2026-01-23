@@ -111,7 +111,7 @@ public class HospitalMenu implements menu.Menu {
             idS++;
             System.out.print("Enter nurse name: ");
             String name = scanner.nextLine();
-            System.out.println("Enter specalization: ");
+            System.out.print("Enter specalization: ");
             String specalization = scanner.nextLine();
             System.out.print("Enter experience: ");
             int experience = scanner.nextInt();
@@ -121,6 +121,7 @@ public class HospitalMenu implements menu.Menu {
                 experience = scanner.nextInt();
                 scanner.nextLine();
             }
+            System.out.print("Enter salary: ");
             double salary = scanner.nextDouble();
             scanner.nextLine();
             Staff staff = new Nurse(id, name, specalization, experience, salary);
@@ -176,7 +177,7 @@ public class HospitalMenu implements menu.Menu {
                 experience = scanner.nextInt();
                 scanner.nextLine();
             }
-            System.out.println("Enter salary: ");
+            System.out.print("Enter salary: ");
             double salary = scanner.nextDouble();
             scanner.nextLine();
             while (salary < 0) {
