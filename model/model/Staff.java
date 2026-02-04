@@ -63,7 +63,7 @@ public abstract class Staff {
         }
     }
 
-    public String toString(){
+    public String getInfo(){
         return "[Staff member] " + name + "(ID: " + id + ", experience: " + experience + " years, salary: " + salary + " KZT)";
     }
 

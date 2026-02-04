@@ -35,8 +35,8 @@ public class Doctor extends model.Staff implements model.DoctorActions {
     }
 
     @Override
-    public void performCheckup(String patientName) {
-        System.out.println("Dr. " + name + " is performing a checkup on " + patientName);
+    public void performCheckup() {
+        System.out.println("Dr. " + name + " is performing a checkup");
     }
     @Override
     public String getSpecialization() {
@@ -44,8 +44,8 @@ public class Doctor extends model.Staff implements model.DoctorActions {
     }
 
     @Override
-    public String toString(){
-        return "Doctor{ID: " + id + " , name: '" + name + ", title: '" + specialization + "', experience: " + experience + " years, salary: " + salary + "}";
+    public String getInfo(){
+        return "Doctor{ID: " + id + " , name: '" + name + ", specialization: '" + specialization + "', experience: " + experience + " years, salary: " + salary + "}";
     }
 
 }

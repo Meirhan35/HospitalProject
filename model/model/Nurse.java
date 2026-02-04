@@ -33,5 +33,8 @@ public class Nurse extends model.Staff {
             return false;
         }
     }
-
+    @Override
+    public String getInfo(){
+        return "Nurse{ID: " + id + " , name: '" + name + ", Specialization: '" + specialization + "', experience: " + experience + " years, salary: " + salary + "}";
+    }
 }
